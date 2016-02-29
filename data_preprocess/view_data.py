@@ -11,6 +11,11 @@ def get_train_set():
     return train
 
 
+def get_test_set():
+    test = pd.read_csv('../dataset/test.csv')
+    return test
+
+
 if __name__ == '__main__':
     train_set = get_train_set()
 
