@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="numpy.int32" />
+          <option value="math" />
         </list>
       </option>
     </inspection_tool>

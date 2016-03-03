@@ -3,49 +3,35 @@
 import pandas as pd
 from pandas import DataFrame
 from data_preprocess.view_data import get_train_set, get_test_set
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
+import re
 
 __author__ = 'fuhuamosi'
 
 
-# 使用随机森林填补Age属性
-def set_missing_ages(df: DataFrame, age_rfr: RandomForestRegressor = None):
-    numerical_features = ['Pclass', 'SibSp', 'Parch', 'Fare', 'Age']
-    age_df = df[numerical_features]
-    known_age = age_df[pd.notnull(age_df.Age)].as_matrix()
-    unknown_age = age_df[pd.isnull(age_df.Age)].as_matrix()
-    x = known_age[:, :-1]
-    y = known_age[:, -1]
-    if age_rfr is None:
-        rfr = RandomForestRegressor(random_state=0, n_estimators=2000, n_jobs=-1)
-        rfr.fit(x, y)
-    else:
-        rfr = age_rfr
-    predict_ages = rfr.predict(unknown_age[:, :-1])
-    df.loc[pd.isnull(df.Age), ['Age']] = predict_ages
-    return rfr, df
-
-
-# 使用随机森林填补Fare属性
-def set_missing_fares(df: DataFrame):
-    numerical_features = ['Pclass', 'SibSp', 'Parch', 'Age', 'Fare']
-    age_df = df[numerical_features]
-    known_fare = age_df[pd.notnull(age_df.Fare)].as_matrix()
-    unknown_fare = age_df[pd.isnull(age_df.Fare)].as_matrix()
-    x = known_fare[:, :-1]
-    y = known_fare[:, -1]
-    rfr = RandomForestRegressor(random_state=0, n_estimators=2000, n_jobs=-1)
-    rfr.fit(x, y)
-    predict_fares = rfr.predict(unknown_fare[:, :-1])
-    df.loc[pd.isnull(df.Fare), ['Fare']] = predict_fares
-    return df
+# # 使用随机森林填补Age属性
+# def set_missing_ages(df: DataFrame, age_rfr: RandomForestRegressor = None):
+#     numerical_features = ['Pclass', 'SibSp', 'Parch', 'Fare', 'Age']
+#     age_df = df[numerical_features]
+#     known_age = age_df[pd.notnull(age_df.Age)].as_matrix()
+#     unknown_age = age_df[pd.isnull(age_df.Age)].as_matrix()
+#     x = known_age[:, :-1]
+#     y = known_age[:, -1]
+#     if age_rfr is None:
+#         rfr = RandomForestRegressor(random_state=0, n_estimators=2000, n_jobs=-1)
+#         rfr.fit(x, y)
+#     else:
+#         rfr = age_rfr
+#     predict_ages = rfr.predict(unknown_age[:, :-1])
+#     df.loc[pd.isnull(df.Age), ['Age']] = predict_ages
+#     return rfr, df
 
 
 # 填补Cabin属性
-def set_cabin_type(df: DataFrame):
-    df.loc[(df.Cabin.notnull()), ['Cabin']] = 'Yes'
-    df.loc[(df.Cabin.isnull()), ['Cabin']] = 'No'
+def set_cabin(df: DataFrame):
+    df.loc[(df.Cabin.notnull()), ['Cabin']] = 1
+    df.loc[(df.Cabin.isnull()), ['Cabin']] = 0
+    df.Cabin = df.Cabin.astype('int')
     return df
 
 
@@ -62,7 +48,7 @@ def set_dummy_vars(df: DataFrame):
 
 
 def scale_features(df: DataFrame):
-    spec_features = ['Age', 'Fare']
+    spec_features = ['Fare']
     scaler = StandardScaler()
     for sf in spec_features:
         scale_param = scaler.fit(df[sf].reshape(-1, 1))
@@ -71,27 +57,53 @@ def scale_features(df: DataFrame):
     return df
 
 
-def clean_train_set():
-    train_set = get_train_set()
-    age_rfr, train_set = set_missing_ages(train_set)
-    train_set = set_cabin_type(train_set)
-    train_set = set_dummy_vars(train_set)
-    train_set = scale_features(train_set)
-    return age_rfr, train_set
+def match_name(name, regex):
+    return re.compile(regex).match(name)
 
 
-def clean_test_set():
-    age_rfr, train_set = clean_train_set()
-    test_set = get_test_set()
-    _, test_set = set_missing_ages(test_set, age_rfr)
-    test_set = set_missing_fares(test_set)
-    test_set = set_cabin_type(test_set)
-    test_set = set_dummy_vars(test_set)
-    test_set = scale_features(test_set)
-    train_set.to_csv('../dataset/cleaned_train.csv', index=False)
-    test_set.to_csv('../dataset/cleaned_test.csv', index=False)
-    return train_set, test_set
+def fill_ages(df: DataFrame):
+    sub = 0
+    df_part = df[['Name', 'Age']]
+    for index, row in df_part.iterrows():
+        name = row['Name']
+        if match_name(name, r".*Master\..*"):
+            res = 4.5
+        elif match_name(name, r".*Miss\..*"):
+            res = 22.0
+        elif match_name(name, r".*Mr\..*"):
+            res = 32.5
+        elif match_name(name, r".*Mrs\..*"):
+            res = 36.0
+        else:
+            res = 30.0
+        df.loc[sub, 'Age'] = res
+        sub += 1
+    return df
+
+
+def fill_embark(df):
+    df.loc[df.Embarked.isnull(), ['Embarked']] = 'S'
+    return df
+
+
+def set_sex(df: DataFrame):
+    df.loc[df.Sex == 'female', ['Sex']] = 1
+    df.loc[df.Sex == 'male', ['Sex']] = 0
+    df.Sex = df.Sex.astype('int')
+    return df
+
+
+def clean_data_set(df: DataFrame, filename):
+    df = fill_ages(df)
+    df = fill_embark(df)
+    df = set_cabin(df)
+    df = set_sex(df)
+    df = set_dummy_vars(df)
+    # df = scale_features(df)
+    df.to_csv(filename, index=False)
+    return df
 
 
 if __name__ == '__main__':
-    clean_test_set()
+    clean_data_set(get_train_set(), '../dataset/cleaned_train.csv')
+    clean_data_set(get_test_set(), '../dataset/cleaned_test.csv')
