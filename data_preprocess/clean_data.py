@@ -37,7 +37,7 @@ def set_cabin(df: DataFrame):
 
 # 设置虚拟变量(独热编码)
 def set_dummy_vars(df: DataFrame):
-    df.drop(labels=['Name', 'Ticket'], axis=1, inplace=True)
+    df.drop(labels=['Name'], axis=1, inplace=True)
     discrete_features = list(df.dtypes[df.dtypes == 'object'].index)
     discrete_features.append('Pclass')
     dummies = [pd.get_dummies(df[f], prefix=f) for f in discrete_features]
@@ -93,12 +93,35 @@ def set_sex(df: DataFrame):
     return df
 
 
+def set_family(df):
+    df['Family'] = df['SibSp'] + df['Parch']
+    df.loc[df['Family'] > 0, ['Family']] = 1
+    df.drop(labels=['SibSp', 'Parch'], axis=1, inplace=True)
+    return df
+
+
+def add_kid_field(df):
+    df['Kid'] = 0
+    df.loc[df['Age'] <= 16, ['Kid']] = 1
+    return df
+
+
+def set_ticket(df):
+    for index, row in df.iterrows():
+        df.loc[index, ['Ticket']] = row['Ticket'][0]
+    df['Ticket'] = df['Ticket'].astype('int')
+    return df
+
+
 def clean_data_set(df: DataFrame, filename):
     df = fill_ages(df)
     df = fill_embark(df)
+    df = set_ticket(df)
     df = set_cabin(df)
     df = set_sex(df)
+    df = set_family(df)
     df = set_dummy_vars(df)
+    df = add_kid_field(df)
     # df = scale_features(df)
     df.to_csv(filename, index=False)
     return df
