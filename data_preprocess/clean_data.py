@@ -109,7 +109,6 @@ def add_kid_field(df):
 def set_ticket(df):
     for index, row in df.iterrows():
         df.loc[index, ['Ticket']] = row['Ticket'][0]
-    df['Ticket'] = df['Ticket'].astype('int')
     return df
 
 

@@ -40,9 +40,9 @@ def view_coef(model: LogisticRegression, train_df):
 
 
 if __name__ == '__main__':
-    feature_reg = 'Sex|Age|Fare|Family|Kid|' \
-                  'Embarked_[C|Q|S]|Pclass_[1-3]|' \
-                  'Ticket'
+    feature_reg = 'Sex|Family|Kid|' \
+                  'Embarked_[S]|Pclass_[2-3]|' \
+                  'Ticket_[1-4|W|P|S]'
     lr_model, sample_df = tree_modeling(pd.read_csv('../dataset/cleaned_train.csv'),
                                         reg='Survived|' + feature_reg)
     view_coef(lr_model, sample_df)

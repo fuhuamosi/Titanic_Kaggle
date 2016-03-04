@@ -15,8 +15,8 @@ def tree_modeling(train_set: DataFrame, reg):
     x = train_np[:, 1:]
     y = train_np[:, 0]
     clf = RandomForestClassifier(n_estimators=250,
-                                 max_depth=8,
-                                 min_samples_split=10)
+                                 max_depth=7,
+                                 min_samples_leaf=3)
     clf.fit(x, y)
     scores = np.array(cross_validation.cross_val_score(clf, x, y, cv=5))
     print('The accuracy on train set is', scores.mean())
@@ -41,13 +41,13 @@ def view_coef(model: RandomForestClassifier, train_df):
 
 
 if __name__ == '__main__':
-    feature_reg = 'Sex|Age|Fare|Family|Kid|' \
-                  'Embarked_[C|Q]|Pclass_[1-3]|' \
-                  'Ticket'
+    feature_reg = 'Sex|Age|Family|Kid|Fare|Family|Cabin' \
+                  '|Embarked_[S]|Pclass_[3]' \
+                  '|Ticket_[1|3]'
     tree_model, sample_df = tree_modeling(pd.read_csv('../dataset/cleaned_train.csv'),
                                           reg='Survived|' + feature_reg)
     predict(pd.read_csv('../dataset/cleaned_test.csv'),
             tree_model,
             feature_reg,
             '../predictions/random_forest.csv')
-    view_coef(tree_model, sample_df)
+    # view_coef(tree_model, sample_df)
