@@ -29,9 +29,12 @@ __author__ = 'fuhuamosi'
 
 # 填补Cabin属性
 def set_cabin(df: DataFrame):
-    df.loc[(df.Cabin.notnull()), ['Cabin']] = 1
-    df.loc[(df.Cabin.isnull()), ['Cabin']] = 0
-    df.Cabin = df.Cabin.astype('int')
+    for index, row in df.iterrows():
+        if isinstance(row['Cabin'], float):
+            df.loc[index, ['Cabin']] = 'X'
+        else:
+            df.loc[index, ['Cabin']] = row['Cabin'][0]
+    df['Cabin'] = df['Cabin'].astype('object')
     return df
 
 

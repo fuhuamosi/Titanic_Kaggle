@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf01ce0f-2a1c-4f9d-830c-16520ef27a9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/predictions/decision_tree.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/predictions/random_forest.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_preprocess/clean_data.py" afterPath="$PROJECT_DIR$/data_preprocess/clean_data.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dataset/cleaned_test.csv" afterPath="$PROJECT_DIR$/dataset/cleaned_test.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dataset/cleaned_train.csv" afterPath="$PROJECT_DIR$/dataset/cleaned_train.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/logistic_regression.py" afterPath="$PROJECT_DIR$/analysis/logistic_regression.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/predictions/random_forest.csv" afterPath="$PROJECT_DIR$/predictions/random_forest.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/random_forest.py" afterPath="$PROJECT_DIR$/analysis/random_forest.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -24,12 +22,12 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Titanic$view_data.coverage" NAME="view_data Coverage Results" MODIFIED="1457078490369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocess" />
-    <SUITE FILE_PATH="coverage/Titanic$random_forest.coverage" NAME="random_forest Coverage Results" MODIFIED="1457116017077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/analysis" />
+    <SUITE FILE_PATH="coverage/Titanic$random_forest.coverage" NAME="random_forest Coverage Results" MODIFIED="1457117828426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/analysis" />
     <SUITE FILE_PATH="coverage/Titanic$logistic_regression.coverage" NAME="logistic_regression Coverage Results" MODIFIED="1457103223845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/analysis" />
     <SUITE FILE_PATH="coverage/Titanic$decision_tree.coverage" NAME="decision_tree Coverage Results" MODIFIED="1457032740681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/analysis" />
     <SUITE FILE_PATH="coverage/Titanic$load_data.coverage" NAME="load_data Coverage Results" MODIFIED="1456590669924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocess" />
     <SUITE FILE_PATH="coverage/Titanic$TEMP.coverage" NAME="TEMP Coverage Results" MODIFIED="1456650175425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocess" />
-    <SUITE FILE_PATH="coverage/Titanic$clean_data.coverage" NAME="clean_data Coverage Results" MODIFIED="1457102318154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocess" />
+    <SUITE FILE_PATH="coverage/Titanic$clean_data.coverage" NAME="clean_data Coverage Results" MODIFIED="1457116994963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocess" />
     <SUITE FILE_PATH="coverage/Titanic$mining_age.coverage" NAME="mining_age Coverage Results" MODIFIED="1456949451010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocess" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -45,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/data_preprocess/clean_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="123" column="19" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="19" />
+              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="35" selection-end-column="54" />
               <folding>
                 <element signature="e#48#67#0" expanded="true" />
               </folding>
@@ -56,8 +54,8 @@
       <file leaf-file-name="random_forest.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analysis/random_forest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.088">
-              <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.488">
+              <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
               <folding>
                 <element signature="e#48#67#0" expanded="true" />
               </folding>
@@ -100,8 +98,8 @@
         <option value="$PROJECT_DIR$/data_preprocess/mining_age.py" />
         <option value="$PROJECT_DIR$/analysis/decision_tree.py" />
         <option value="$PROJECT_DIR$/data_preprocess/view_data.py" />
-        <option value="$PROJECT_DIR$/data_preprocess/clean_data.py" />
         <option value="$PROJECT_DIR$/analysis/logistic_regression.py" />
+        <option value="$PROJECT_DIR$/data_preprocess/clean_data.py" />
         <option value="$PROJECT_DIR$/analysis/random_forest.py" />
       </list>
     </option>
@@ -539,8 +537,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.random_forest" />
-        <item index="1" class="java.lang.String" itemvalue="Python.logistic_regression" />
-        <item index="2" class="java.lang.String" itemvalue="Python.clean_data" />
+        <item index="1" class="java.lang.String" itemvalue="Python.clean_data" />
+        <item index="2" class="java.lang.String" itemvalue="Python.logistic_regression" />
         <item index="3" class="java.lang.String" itemvalue="Python.view_data" />
         <item index="4" class="java.lang.String" itemvalue="Python.decision_tree" />
       </list>
@@ -599,7 +597,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457102051077</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add ticket feature.">
+      <created>1457116145621</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1457116145621</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -668,7 +672,8 @@
     <MESSAGE value="Add logistic regression model." />
     <MESSAGE value="Add decision tree." />
     <MESSAGE value="Add random forest." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add random forest." />
+    <MESSAGE value="Add ticket feature." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ticket feature." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -852,14 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm40/python_stubs/507187707/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3324138">
-          <caret line="3675" column="8" selection-start-line="3675" selection-start-column="8" selection-end-line="3675" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset/train.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -967,10 +964,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sklearn/ensemble/forest.py">
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm40/python_stubs/507187707/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
-          <caret line="862" column="17" selection-start-line="862" selection-start-column="17" selection-end-line="862" selection-end-column="17" />
+          <caret line="2946" column="6" selection-start-line="2946" selection-start-column="6" selection-end-line="2946" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -978,17 +975,25 @@
     <entry file="file://$PROJECT_DIR$/data_preprocess/clean_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="19" selection-start-line="123" selection-start-column="19" selection-end-line="123" selection-end-column="19" />
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="35" selection-end-column="54" />
           <folding>
             <element signature="e#48#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/sklearn/ensemble/forest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.029333">
+          <caret line="871" column="17" selection-start-line="871" selection-start-column="17" selection-end-line="871" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analysis/random_forest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.088">
-          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.488">
+          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
           <folding>
             <element signature="e#48#67#0" expanded="true" />
           </folding>
