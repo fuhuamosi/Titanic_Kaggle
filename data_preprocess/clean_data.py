@@ -30,6 +30,7 @@ __author__ = 'fuhuamosi'
 # 填补Cabin属性
 def set_cabin(df: DataFrame):
     for index, row in df.iterrows():
+        # is nan
         if isinstance(row['Cabin'], float):
             df.loc[index, ['Cabin']] = 'X'
         else:

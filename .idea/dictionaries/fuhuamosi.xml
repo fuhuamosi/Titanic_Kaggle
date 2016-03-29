@@ -1,7 +1,12 @@
 <component name="ProjectDictionaryState">
   <dictionary name="fuhuamosi">
     <words>
+      <w>bytree</w>
       <w>coef</w>
+      <w>colsample</w>
+      <w>dtest</w>
+      <w>dtrain</w>
+      <w>dvalid</w>
       <w>gini</w>
       <w>kaggle</w>
       <w>pclass</w>
